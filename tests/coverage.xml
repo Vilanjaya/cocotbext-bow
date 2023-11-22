@@ -1,0 +1,21 @@
+<top abs_name="top" size="9" coverage="9" cover_percentage="100.0">
+  <fec_in size="2" coverage="2" cover_percentage="100.0" abs_name="top.fec_in" weight="1" at_least="1">
+    <bin0 bin="0" hits="820" abs_name="top.fec_in.bin0" />
+    <bin1 bin="1" hits="780" abs_name="top.fec_in.bin1" />
+  </fec_in>
+  <aux_in size="2" coverage="2" cover_percentage="100.0" abs_name="top.aux_in" weight="1" at_least="1">
+    <bin0 bin="0" hits="992" abs_name="top.aux_in.bin0" />
+    <bin1 bin="1" hits="608" abs_name="top.aux_in.bin1" />
+  </aux_in>
+  <cross size="3" coverage="3" cover_percentage="100.0" abs_name="top.cross">
+    <ab size="3" coverage="3" cover_percentage="100.0" abs_name="top.cross.ab" weight="1" at_least="1">
+      <bin0 bin="(0, 0)" hits="444" abs_name="top.cross.ab.bin0" />
+      <bin1 bin="(1, 0)" hits="548" abs_name="top.cross.ab.bin1" />
+      <bin2 bin="(1, 1)" hits="232" abs_name="top.cross.ab.bin2" />
+    </ab>
+  </cross>
+  <pwrite_tx size="2" coverage="2" cover_percentage="100.0" abs_name="top.pwrite_tx" weight="1" at_least="1">
+    <bin0 bin="0" hits="50" abs_name="top.pwrite_tx.bin0" />
+    <bin1 bin="1" hits="1550" abs_name="top.pwrite_tx.bin1" />
+  </pwrite_tx>
+</top>
