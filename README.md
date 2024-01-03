@@ -68,12 +68,11 @@ If you're using a virtual environment, activate it before running the tests. See
 
 **Run Tests (Command Line):**
 
-Depending on your project structure, you might run your tests from the command line. The typical command is:
+Depending on your project structure, you might run your tests from the command line. To use these modules, import the one you need and connect it to the DUT. The typical command is:
 
   
 
-    cocotb <test_module_name>
-    Replace <test_module_name> with the actual name of your test module.
+    from hdl.bow_run import  BOWDriver, BOWConfig
 
   
 
@@ -115,15 +114,32 @@ After activating the virtual environment, you can install the required packages 
 
 Sample Interface
 
-    self.bow = BOW(dut, prefix, config, ...) # Initialize BOW instance
-    self.bow.tx.write(addr, data) # Write data to the transmitter module
-    self.bow.tx.read(addr, data) # Read data from the transmitter module
-    self.bow.rx.add_rd_callback() # Add a read callback to the receiver module
-    self.bow.rx.add_wr_callback() # Add a write callback to the receiver module
-    await  self.bow.rxEvent # Wait for the receiver event
-    txn =  self.bow.pop() # Retrieve a transaction from BOW
+  
 
-**Create a similar structure for BOW (assuming it's for further processing)**
+    import asyncio
+    from cocotbext.bow import BOWDriver, BOWConfig
+
+    async def run_test():
+        bow = BOWDriver(dut, data, pclk_tx, sb_callback)
+        
+    for _ in range(32):
+        await bow._driver_write(0x0000)
+        await bow._driver_write.wait()
+        
+    async def cb(txn):
+        data = txn['data']
+        print(f"Received data in callback: {data}")
+
+    bow.set_callback(cb)
+
+    rdata = await bow._driver_read()
+
+    try:
+        bow.regress()
+    except Exception as e:
+        cocotb.log.info("Regression failed: %s" % str(e))
+        
+    asyncio.run(run_test())
 
 # Usage
 
