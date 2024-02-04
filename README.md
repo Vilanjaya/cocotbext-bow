@@ -1,116 +1,36 @@
-# BOW (Bunch Of Wires) Documentation
+# BOW (Bunch Of Wires) 
 
-  
+GitHub repository: [https://github.com/Vilanjaya/cocotbext-bow](https://github.com/Vilanjaya/cocotbext-bow)
 
+## Introduction
 BOW is a versatile module designed to handle data transmission through a network of wires. This documentation provides a detailed overview of the various components, functionalities, and best practices for integrating BOW into your projects.
 
-# Table of Contents
+## Installation
+Installation from pip (release version, stable):
 
- 1. Bow_tx 
- 2. Bow_rx 
- 3. Bow_system Linear Feedback Shift Register (LFSR)
- 4. Cocotb Testbench for Bow_rx 
- 5. Cocotb Testbench for Bow_system Cocotb
- 6. Test for I2C Write Functionality 
- 7. Constraint Module 
- 8. Cocotb Framework for LFSR Behavior Verification 
- 9. Makefile (Bow_test, lfsr_test,Bow_rx_test, Bow_system_test)
+    pip install cocotbext-bow
+Installation from git (latest development version, potentially unstable):
 
-**Getting Started**
+    pip install https://github.com/Vilanjaya/cocotbext-bow/archive/main.zip
+Installation for active development:
 
-Prerequisites
+    git clone https://github.com/Vilanjaya/cocotbext-bow
+    pip install -e cocotbext-bow
+## Documentation and Usage
 
-  
-
-- Verilog simulator (e.g., Icarus Verilog)
-- Cocotb for testbench development
-
-  
-
-**Installation**
-
- 
-**Clone the repository**: 
-
-    git clone https://github.com/Vilanjaya/BOW.git`
-
-**Python Version: Make sure you have Python 3.x installed. You can download Python from the official**
-
-    sudo apt install python3.8
-
-**Package Installation:**
-
-After installing Python, open a terminal or command prompt and use pip to install the required Python packages. In this case, you'll need to install cocotb, cocotb_bus, and cocotb_coverage. Run the following commands:
-
-    pip install cocotb
-    pip install cocotb_bus
-    pip install cocotb_coverage
-
-**Other Dependencies:**
-
-The collections, random, and os modules are part of the Python standard library, so you don't need to install them separately.
-
-**Run Tests:**
-
-  
-
-Once you have the necessary packages installed, you can run your tests. Usually, testbenches in Cocotb are run using a simulator like ModelSim or VCS. Make sure your simulator is properly installed and configured.
-
-  
-
-**Activate Virtual Environment (Optional):**
-
-  
-
-If you're using a virtual environment, activate it before running the tests. See the previous response for instructions on creating and activating a virtual environment.
-
-  
+See the `tests` directory for complete test-benches using these modules.
 
 **Run Tests (Command Line):**
 
+  
+
 Depending on your project structure, you might run your tests from the command line. To use these modules, import the one you need and connect it to the DUT. The typical command is:
 
-  
+     from hdl.bow_run import BOWDriver, BOWConfig
 
-    from hdl.bow_run import  BOWDriver, BOWConfig
-
-  
-
+ 
 Make sure to consult the documentation of Cocotb and your simulator for any simulator-specific instructions.
-
-  
-
-**virtual environments to manage your project dependencies:**
-
-  
-
-    python -m venv venv
-
-  
-
-**Activate the virtual environment:**
-
-  
-
-*On Windows:*
-
-  
-
-    .\venv\Scripts\activate
-
-  
-
-*On Linux/macOS:*
-
-  
-
-    source venv/bin/activate
-
-  
-
-After activating the virtual environment, you can install the required packages using pip install
-
-  # Example Interface**
+ # Example Interface**
 
 Sample Interface
 
@@ -140,7 +60,6 @@ Sample Interface
         cocotb.log.info("Regression failed: %s" % str(e))
         
     asyncio.run(run_test())
-
 # Usage
 
 ***1. Bow_tx***
@@ -536,47 +455,6 @@ Makefile:
 Includes necessary Cocotb Makefile rules.*
 
 
-## Contributing
-
-We welcome contributions! Read the contribution guidelines for more information.
-
-## Contribution Guidelines
-
-### Getting Started
-
-1.  Fork the repository on GitHub.
-2.  Clone your forked repository to your local machine.
-3.  Create a new branch for your changes.
-4.  Make your changes and commit them with a descriptive commit message.
-5.  Push your changes to your fork on GitHub.
-6.  Open a pull request on the official BOW repository.
-
-### Code Style
-
--   Follow the existing code style and structure in the project.
--   Use meaningful variable and function names.
--   Document your code thoroughly, especially for complex sections.
-
-### Testing
-
--   Ensure your changes don't break existing tests.
--   Add new tests for any new functionality.
-
-### Commit Guidelines
-
--   Use clear and concise commit messages.
--   Prefix your commit messages with the relevant type:
-    -   `feat`: for new features
-    -   `fix`: for bug fixes
-    -   `docs`: for documentation changes
-    -   `test`: for adding tests
-    -   `chore`: for routine tasks, maintenance, etc.
-
-### Pull Request Guidelines
-
--   Provide a clear and descriptive title for your pull request.
--   Explain the purpose and scope of your changes in the description.
--   Reference any related issues in your pull request.
 
 ## License
 
@@ -590,5 +468,6 @@ Special thanks to:
 -  **[Vijayvithal Jahagirdar](https://github.com/jahagirdar):**  for mentoring and providing guidance throughout the development process 
 
 -  **[Kishan S Murthy](https://www.linkedin.com/in/kishan-s-murthy-84797a212/):**  for collaborative efforts in building and contributing to the project.
+
 
 
